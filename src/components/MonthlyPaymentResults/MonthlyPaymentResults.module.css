@@ -21,31 +21,6 @@
   text-align: center;
 }
 
-.paymentCircle {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 4px solid #059669;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.paymentAmount {
-  font-size: 2rem;
-  font-weight: 600;
-  color: white;
-  text-align: center;
-  font-family: 'IBM Plex Mono', monospace;
-}
-
-.perMonth {
-  font-size: 0.875rem;
-  color: #9ca3af;
-  margin-top: 0.25rem;
-}
-
 .paymentBreakdown {
   width: 100%;
   margin-top: 1rem;
@@ -62,6 +37,19 @@
   border-bottom: none;
 }
 
+.breakdownLabelContainer {
+  display: flex;
+  align-items: center;
+}
+
+.colorIndicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+  display: inline-block;
+}
+
 .breakdownLabel {
   color: #9ca3af;
 }
@@ -70,6 +58,15 @@
   font-weight: 600;
   color: white;
   font-family: 'IBM Plex Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.percentageValue {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
 }
 
 .actionContainer {

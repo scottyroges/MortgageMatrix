@@ -22,6 +22,8 @@ The current focus is on implementing the core calculator screens of the Mortgage
   - InfoSection: For the "How It Works" section
   - Footer: For the page footer with social media icons
   - AffordabilityEstimatorResults: For displaying dynamic calculation results with detailed interest rate breakdowns
+  - MonthlyPaymentResults: For displaying monthly payment calculation results with a payment breakdown
+  - PaymentCircle: For visualizing payment breakdown as a segmented ring chart with color-coded segments
   - TermSelector: For selecting loan term options (30, 20, 15, 10 years) with button group
 - Implemented mortgage calculation utilities:
   - mortgageCalculations.ts: For affordability calculations
@@ -74,6 +76,8 @@ The current focus is on implementing the core calculator screens of the Mortgage
 3. Implement state management for sharing data between components
 4. Add routing for multiple pages/features
 5. Enhance accessibility features
+6. Add more detailed payment breakdowns and visualizations
+7. Add more visualization components for mortgage data (amortization charts, etc.)
 
 ## Current Challenges
 

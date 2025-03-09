@@ -142,6 +142,33 @@ A component for displaying the results of mortgage affordability calculations wi
 
 The component renders expandable items for each property tax amount, showing the affordable house price range. When expanded, it displays a detailed breakdown of house prices for each interest rate.
 
+### PaymentCircle
+A visualization component that displays a segmented ring chart where each segment represents a payment component with a distinct color and sized proportionally to its percentage of the total.
+```tsx
+<PaymentCircle
+  segments={paymentSegments}
+  totalAmount={monthlyPayment}
+  formatCurrency={formatCurrency}
+/>
+```
+
+The component takes an array of payment segments, each with a name, value, percentage, and color. It renders an SVG ring chart with segments sized according to their percentage of the total, and displays the total amount in the center.
+
+### MonthlyPaymentResults
+A component for displaying the results of monthly payment calculations with a payment breakdown.
+```tsx
+<MonthlyPaymentResults
+  monthlyPayment={monthlyPayment}
+  principalAndInterest={principalAndInterest}
+  propertyTax={propertyTax}
+  homeInsurance={homeInsurance}
+  hoaFees={hoaFees}
+  onReset={handleReset}
+/>
+```
+
+The component uses the PaymentCircle component to visualize the payment breakdown and provides a detailed list of the payment components: principal & interest, property tax, home insurance, and HOA fees. Each item in the breakdown includes a color indicator that matches its segment in the circle chart and displays both the monetary value and percentage of the total payment.
+
 ## State Management
 - Local component state using React's useState hook for component-specific state
 - Form state management for user inputs

@@ -30,7 +30,10 @@
 - ✅ UI enhancement: Updated InfoSection background color to match design
 - ✅ Calculation utilities for mortgage estimates and monthly payments
 - ✅ AffordabilityEstimatorResults component for displaying dynamic calculation results with detailed interest rate breakdowns
+- ✅ MonthlyPaymentResults component for displaying monthly payment calculation results with payment breakdown
+- ✅ PaymentCircle component for visualizing payment breakdown as a segmented ring chart with color-coded segments
 - ✅ Integration of UI with calculation logic to display actual affordable house prices and monthly payments
+- ✅ Enhanced visualization of monthly payment breakdown with color-coded segments and percentage display
 
 ## What's Left to Build
 - 🔲 Advanced form validation
@@ -48,7 +51,9 @@ The project has progressed from initial setup to having two fully functional cal
 
 For the Home Affordability Estimator, the form inputs, sliders, and expandable results section are all working as expected with actual calculation data. We've created a dedicated AffordabilityEstimatorResults component to display the calculation results in a clean, organized way.
 
-For the Monthly Payment Calculator, we've implemented a form with home price, down payment (with percentage calculation), loan term selection, interest rate, taxes, insurance, and HOA inputs. The calculator displays the monthly payment amount after the user clicks the Calculate button.
+For the Monthly Payment Calculator, we've implemented a form with home price, down payment (with percentage calculation), loan term selection, interest rate, taxes, insurance, and HOA inputs. The calculator displays the monthly payment amount after the user clicks the Calculate button. We've refactored the results section into a dedicated MonthlyPaymentResults component that shows a detailed breakdown of principal & interest, property tax, home insurance, and HOA fees.
+
+We've enhanced the visualization of the monthly payment breakdown by creating a new PaymentCircle component that displays a segmented ring chart where each segment represents a payment component (principal & interest, property tax, home insurance, and HOA fees) with a distinct color and sized proportionally to its percentage of the total payment. The payment breakdown items now include color indicators that match the circle segments and display the percentage of each component.
 
 The mortgage calculation utilities have been implemented and integrated with the UI, allowing users to see affordable house prices and monthly payments based on their inputs. We've created a new TermSelector component for selecting loan term options with a button group interface.
 

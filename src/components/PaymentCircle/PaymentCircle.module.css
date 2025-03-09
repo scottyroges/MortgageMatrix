@@ -1,0 +1,29 @@
+.paymentCircleContainer {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paymentCircle {
+  width: 100%;
+  height: 100%;
+}
+
+.paymentAmount {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.perMonth {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+}
