@@ -6,12 +6,14 @@ import { MonthlyPaymentCalculator } from './pages/MonthlyPaymentCalculator'
 import { PrivacyPolicy } from './pages/PrivacyPolicy'
 import { TermsOfService } from './pages/TermsOfService'
 import { ScrollToTop } from './components/ScrollToTop'
+import { Analytics } from "@vercel/analytics/react"
 import './App.css'
 
 const App = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <Analytics />
       <MainLayout>
         <Routes>
           <Route path='/' element={<AffordabilityEstimator />} />
