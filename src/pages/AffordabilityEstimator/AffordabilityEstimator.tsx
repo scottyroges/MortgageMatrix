@@ -191,7 +191,7 @@ export const AffordabilityEstimator = () => {
         title='How It Works'
         content='Using industry standard amortization formulas and your desired monthly payment, we calculate the home prices in your range.'
         linkText='Learn more about our methodology'
-        linkUrl='#'
+        linkUrl='/how-it-works'
       />
 
       <Footer />
