@@ -25,18 +25,30 @@ export const AffordabilityEstimatorResults = ({
         {Object.entries(results).map(([propertyTax, data]) => (
           <ExpandableItem
             key={propertyTax}
-            label="Taxes"
+            label='Taxes'
             labelValue={formatCurrency(Number(propertyTax))}
             value={formatPriceRange(data.min, data.max)}
           >
             <div className={styles.expandedContent}>
               <div className={styles.interestRateTable}>
-                {data.housePrices.map((pricePoint) => (
-                  <div key={pricePoint.interestRate} className={styles.interestRateRow}>
-                    <span className={styles.interestRate}>Interest {pricePoint.interestRate.toFixed(1)}%</span>
-                    <span className={styles.housePrice}>{formatCurrency(pricePoint.housePrice)}</span>
-                  </div>
-                ))}
+                {data.housePrices.map(pricePoint => {
+                  const housePrice = formatCurrency(pricePoint.housePrice)
+                  return (
+                    <div
+                      key={pricePoint.interestRate}
+                      className={styles.interestRateRow}
+                    >
+                      <span className={styles.interestRate}>
+                        Interest {pricePoint.interestRate.toFixed(1)}%
+                      </span>
+                      <span
+                        className={`${housePrice === 'Out of Budget' ? styles.housePriceOutOfBudget : styles.housePrice}`}
+                      >
+                        {housePrice}
+                      </span>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </ExpandableItem>

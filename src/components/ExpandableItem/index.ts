@@ -1,1 +1,1 @@
-export { ExpandableItem } from './ExpandableItem';
+export { ExpandableItem } from './ExpandableItem'

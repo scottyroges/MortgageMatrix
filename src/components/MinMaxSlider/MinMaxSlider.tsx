@@ -1,22 +1,22 @@
-import type { ChangeEvent } from 'react';
-import { useState, useEffect, useRef } from 'react';
+import type { ChangeEvent } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
-import styles from './MinMaxSlider.module.css';
+import styles from './MinMaxSlider.module.css'
 
 interface MinMaxSliderProps {
-  rangeMin?: number;
-  rangeMax?: number;
-  step?: number;
-  defaultMinValue?: number;
-  defaultMaxValue?: number;
-  onChange?: (range: RangeValues) => void;
-  inputLabel?: string;
-  minMaxLabelType: 'percentage' | 'money';
+  rangeMin?: number
+  rangeMax?: number
+  step?: number
+  defaultMinValue?: number
+  defaultMaxValue?: number
+  onChange?: (range: RangeValues) => void
+  inputLabel?: string
+  minMaxLabelType: 'percentage' | 'money'
 }
 
 export interface RangeValues {
-  min: number;
-  max: number;
+  min: number
+  max: number
 }
 
 export const MinMaxSlider = ({
@@ -29,27 +29,27 @@ export const MinMaxSlider = ({
   inputLabel = '',
   minMaxLabelType = 'money',
 }: MinMaxSliderProps) => {
-  const [minValue, setMinValue] = useState<number>(defaultMinValue);
-  const [maxValue, setMaxValue] = useState<number>(defaultMaxValue);
-  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [minValue, setMinValue] = useState<number>(defaultMinValue)
+  const [maxValue, setMaxValue] = useState<number>(defaultMaxValue)
+  const trackRef = useRef<HTMLDivElement | null>(null)
 
   // Calculate the percentage position for styling
   const getPercent = (value: number): number => {
-    return Math.round(((value - rangeMin) / (rangeMax - rangeMin)) * 100);
-  };
+    return Math.round(((value - rangeMin) / (rangeMax - rangeMin)) * 100)
+  }
 
   const formatValue = (value: number, type: 'percentage' | 'money'): string => {
     if (type === 'percentage') {
-      return `${value}%`;
+      return `${value}%`
     }
-    return `$${value.toLocaleString()}`;
-  };
+    return `$${value.toLocaleString()}`
+  }
 
   // Update the range highlight style
   useEffect(() => {
     if (trackRef.current) {
-      const minPercent = getPercent(minValue);
-      const maxPercent = getPercent(maxValue);
+      const minPercent = getPercent(minValue)
+      const maxPercent = getPercent(maxValue)
 
       trackRef.current.style.background = `linear-gradient(
         to right,
@@ -57,35 +57,39 @@ export const MinMaxSlider = ({
         #059669 ${minPercent}%,
         #059669 ${maxPercent}%,
         #e5e7eb ${maxPercent}%
-      )`;
+      )`
     }
-  }, [minValue, maxValue, rangeMin, rangeMax]);
+  }, [minValue, maxValue, rangeMin, rangeMax])
 
   // Notify parent component when values change
   useEffect(() => {
     if (onChange) {
-      onChange({ min: minValue, max: maxValue });
+      onChange({ min: minValue, max: maxValue })
     }
-  }, [minValue, maxValue, onChange]);
+  }, [minValue, maxValue, onChange])
 
   // Handlers for min thumb
   const handleMinChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const newMinValue = Math.min(+e.target.value, maxValue - step);
-    setMinValue(newMinValue);
-  };
+    const newMinValue = Math.min(+e.target.value, maxValue - step)
+    setMinValue(newMinValue)
+  }
 
   // Handlers for max thumb
   const handleMaxChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const newMaxValue = Math.max(+e.target.value, minValue + step);
-    setMaxValue(newMaxValue);
-  };
+    const newMaxValue = Math.max(+e.target.value, minValue + step)
+    setMaxValue(newMaxValue)
+  }
 
   return (
     <div className={styles.container}>
       <label className={styles.inputLabel}>{inputLabel}</label>
       <div className={styles.rangeLabelsContainer}>
-        <div className={styles.rangeLabel}>{formatValue(minValue, minMaxLabelType)}</div>
-        <div className={styles.rangeLabel}>{formatValue(maxValue, minMaxLabelType)}</div>
+        <div className={styles.rangeLabel}>
+          {formatValue(minValue, minMaxLabelType)}
+        </div>
+        <div className={styles.rangeLabel}>
+          {formatValue(maxValue, minMaxLabelType)}
+        </div>
       </div>
 
       <div className={styles.sliderContainer}>
@@ -94,7 +98,7 @@ export const MinMaxSlider = ({
 
         {/* Min thumb */}
         <input
-          type="range"
+          type='range'
           min={rangeMin}
           max={rangeMax}
           step={step}
@@ -105,7 +109,7 @@ export const MinMaxSlider = ({
 
         {/* Max thumb */}
         <input
-          type="range"
+          type='range'
           min={rangeMin}
           max={rangeMax}
           step={step}
@@ -115,5 +119,5 @@ export const MinMaxSlider = ({
         />
       </div>
     </div>
-  );
-};
+  )
+}

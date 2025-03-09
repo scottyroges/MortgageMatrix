@@ -53,6 +53,12 @@
   color: #059669;
 }
 
+.housePriceOutOfBudget {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #b31a1a;
+}
+
 .actionContainer {
   margin-top: 1rem;
   padding: 1.5rem 1rem;

@@ -1,11 +1,11 @@
-import type { ReactNode } from 'react';
+import type { ReactNode } from 'react'
 
-import { Header } from '../../components/Header';
+import { Header } from '../../components/Header'
 
-import styles from './MainLayout.module.css';
+import styles from './MainLayout.module.css'
 
 interface MainLayoutProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
@@ -16,5 +16,5 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
         <div className={styles.content}>{children}</div>
       </main>
     </div>
-  );
-};
+  )
+}

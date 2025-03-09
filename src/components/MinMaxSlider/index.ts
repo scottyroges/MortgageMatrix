@@ -1,2 +1,2 @@
-export { MinMaxSlider } from './MinMaxSlider';
-export type { RangeValues } from './MinMaxSlider';
+export { MinMaxSlider } from './MinMaxSlider'
+export type { RangeValues } from './MinMaxSlider'

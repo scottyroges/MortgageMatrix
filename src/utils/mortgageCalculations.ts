@@ -97,9 +97,6 @@ export const calculateAffordableHousePrices = (
 
   const propertyTaxes = generatePropertyTaxRange(propertyTaxMin, propertyTaxMax)
 
-  console.log(`Property Taxes: ${propertyTaxes}`)
-  console.log(`Interest Rates: ${interestRates}`)
-
   // Calculate monthly insurance and HOA
   const monthlyInsurance = insurance / 12
   const monthlyHOA = Number(hoa)
@@ -161,6 +158,9 @@ export const calculateAffordableHousePrices = (
  * @returns A formatted currency string
  */
 export const formatCurrency = (value: number): string => {
+  if (value < 0) {
+    return 'Out of Budget'
+  }
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -176,6 +176,9 @@ export const formatCurrency = (value: number): string => {
  * @returns A formatted price range string
  */
 export const formatPriceRange = (min: number, max: number): string => {
+  if (min < 0 || max < 0) {
+    return 'Out of Budget'
+  }
   return `${formatCurrency(min)} - ${formatCurrency(max)}`
 }
 

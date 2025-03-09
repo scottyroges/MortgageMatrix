@@ -1,1 +1,1 @@
-export * from './AffordabilityEstimator';
+export * from './AffordabilityEstimator'
