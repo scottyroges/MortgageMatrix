@@ -35,7 +35,7 @@
 - ✅ PaymentCircle component for visualizing payment breakdown as a segmented ring chart with color-coded segments
 - ✅ Integration of UI with calculation logic to display actual affordable house prices and monthly payments
 - ✅ Enhanced visualization of monthly payment breakdown with color-coded segments and percentage display
-- ✅ URL parameter sharing for Affordability Estimator calculations
+- ✅ URL parameter sharing for both calculator screens
 - ✅ Share button for copying calculation URLs to clipboard
 - ✅ Compact URL parameter hashing for shorter shareable URLs
 - ✅ Automatic calculation when loading page with URL parameters
@@ -63,6 +63,8 @@ We've enhanced the visualization of the monthly payment breakdown by creating a 
 
 The mortgage calculation utilities have been implemented and integrated with the UI, allowing users to see affordable house prices and monthly payments based on their inputs. We've created a new TermSelector component for selecting loan term options with a button group interface.
 
+We've added URL parameter sharing functionality to both calculator screens, allowing users to share their calculation results with others via a compact URL. The URL parameters are automatically parsed when loading the page, and the form is populated with the values from the URL. We've also added a "Share Results" button to both calculator results sections, which copies the URL with the current form values to the clipboard.
+
 The mobile view has been improved by removing unnecessary padding and ensuring the forms are responsive on smaller screens.
 
 ## Known Issues
@@ -76,6 +78,7 @@ The mobile view has been improved by removing unnecessary padding and ensuring t
 - [x] First screen UI implementation
 - [x] Second screen UI implementation
 - [x] Core calculator functionality for both screens
+- [x] URL parameter sharing for calculator results
 - [ ] Visualization components
 - [ ] Comparison features
 - [ ] Comprehensive testing

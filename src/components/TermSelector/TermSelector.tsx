@@ -1,25 +1,19 @@
-import { useState } from 'react'
 import styles from './TermSelector.module.css'
 
 interface TermSelectorProps {
   options: number[]
-  defaultValue?: number
+  value?: number
   onChange: (value: number) => void
   label: string
 }
 
 export const TermSelector = ({
   options,
-  defaultValue,
+  value = 30,
   onChange,
   label,
 }: TermSelectorProps) => {
-  const [selectedValue, setSelectedValue] = useState<number>(
-    defaultValue || options[0],
-  )
-
   const handleSelect = (value: number) => {
-    setSelectedValue(value)
     onChange(value)
   }
 
@@ -32,7 +26,7 @@ export const TermSelector = ({
             key={option}
             type='button'
             className={`${styles.button} ${
-              selectedValue === option ? styles.selected : ''
+              value === option ? styles.selected : ''
             }`}
             onClick={() => handleSelect(option)}
           >

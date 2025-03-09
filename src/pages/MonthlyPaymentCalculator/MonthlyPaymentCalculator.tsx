@@ -1,10 +1,15 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { Button } from '../../components/Button'
 import { InfoSection } from '../../components/InfoSection'
 import { InputField } from '../../components/InputField'
 import { MonthlyPaymentResults } from '../../components/MonthlyPaymentResults'
 import { TermSelector } from '../../components/TermSelector'
 import { calculateMonthlyPayment } from '../../utils/calculateMonthlyPayment'
+import {
+  parseShortUrlHashForMonthlyPaymentCalculator,
+  updateBrowserUrlForMonthlyPaymentCalculator,
+} from '../../utils/monthlyPaymentParamHashing'
+import type { MonthlyPaymentFormValues } from '../../types/monthlyPaymentFormValues'
 
 import styles from './MonthlyPaymentCalculator.module.css'
 
@@ -23,7 +28,7 @@ export const MonthlyPaymentCalculator = () => {
   const [annualInsurance, setAnnualInsurance] = useState('1000')
   const [monthlyHOA, setMonthlyHOA] = useState('0')
 
-  // Form validation
+  // Form validation and results visibility
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [monthlyPaymentResults, setMonthlyPaymentResults] = useState<
     number | null
@@ -35,6 +40,53 @@ export const MonthlyPaymentCalculator = () => {
 
   // Ref for results section
   const resultsRef = useRef<HTMLDivElement>(null)
+
+  // Check for URL parameters on component mount
+  useEffect(() => {
+    const searchParams = window.location.search
+    const hashParam = new URLSearchParams(searchParams).get('p')
+
+    let formValues: MonthlyPaymentFormValues | null = null
+
+    // Try to parse from hash parameter (short URL)
+    if (hashParam) {
+      try {
+        formValues = parseShortUrlHashForMonthlyPaymentCalculator(hashParam)
+      } catch (error) {
+        console.error('Error parsing hash parameter:', error)
+      }
+    }
+
+    // If we have form values, update the form state
+    if (formValues) {
+      setHomePrice(formValues.homePrice)
+      setDownPayment(formValues.downPayment)
+      setLoanTerm(formValues.loanTerm)
+      setInterestRate(formValues.interestRate)
+      setAnnualTaxes(formValues.annualTaxes)
+      setAnnualInsurance(formValues.annualInsurance)
+      setMonthlyHOA(formValues.monthlyHOA)
+
+      // Update down payment percentage
+      updateDownPaymentPercent(formValues.downPayment, formValues.homePrice)
+
+      // Trigger calculation after a short delay to ensure state is updated
+      setTimeout(() => {
+        if (validateForm()) {
+          performCalculation({
+            homePrice: formValues.homePrice,
+            downPayment: formValues.downPayment,
+            loanTerm: formValues.loanTerm,
+            interestRate: formValues.interestRate,
+            annualTaxes: formValues.annualTaxes,
+            annualInsurance: formValues.annualInsurance,
+            monthlyHOA: formValues.monthlyHOA,
+            skipScrolling: true,
+          })
+        }
+      }, 100)
+    }
+  }, [])
 
   // Update down payment percentage when down payment or home price changes
   const updateDownPaymentPercent = (
@@ -107,11 +159,34 @@ export const MonthlyPaymentCalculator = () => {
       newErrors.annualInsurance = 'Annual insurance is required'
     }
 
+    if (!monthlyHOA) {
+      newErrors.monthlyHOA = 'HOA fees are required'
+    }
+
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
 
-  const handleCalculate = () => {
+  // Internal calculation function that can be called with the skipScrolling parameter
+  const performCalculation = ({
+    homePrice,
+    downPayment,
+    loanTerm,
+    interestRate,
+    annualTaxes,
+    annualInsurance,
+    monthlyHOA,
+    skipScrolling = false,
+  }: {
+    homePrice: string
+    downPayment: string
+    loanTerm: number
+    interestRate: string
+    annualTaxes: string
+    annualInsurance: string
+    monthlyHOA: string
+    skipScrolling?: boolean
+  }) => {
     if (validateForm()) {
       // Parse input values
       const homePriceValue = parseFloat(homePrice)
@@ -119,7 +194,7 @@ export const MonthlyPaymentCalculator = () => {
       const interestRateValue = parseFloat(interestRate)
       const annualTaxesValue = parseFloat(annualTaxes)
       const annualInsuranceValue = parseFloat(annualInsurance)
-      const monthlyHOAValue = parseFloat(monthlyHOA || '0')
+      const monthlyHOAValue = parseFloat(monthlyHOA)
 
       // Calculate loan amount
       const loanAmount = homePriceValue - downPaymentValue
@@ -167,19 +242,47 @@ export const MonthlyPaymentCalculator = () => {
 
       setMonthlyPaymentResults(payment)
 
-      setTimeout(() => {
-        const element = resultsRef.current
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          const offset = 50
-          const scrollPosition = document.querySelector('body')?.scrollTop ?? 0
-          document.querySelector('body')?.scrollTo({
-            top: scrollPosition + rect.top - offset,
-            behavior: 'smooth',
-          })
-        }
-      }, 300)
+      // Update URL with form parameters
+      updateBrowserUrlForMonthlyPaymentCalculator({
+        homePrice,
+        downPayment,
+        loanTerm,
+        interestRate,
+        annualTaxes,
+        annualInsurance,
+        monthlyHOA,
+      })
+
+      if (!skipScrolling) {
+        setTimeout(() => {
+          const element = resultsRef.current
+          if (element) {
+            const rect = element.getBoundingClientRect()
+            const offset = 50
+            const scrollPosition =
+              document.querySelector('body')?.scrollTop ?? 0
+            document.querySelector('body')?.scrollTo({
+              top: scrollPosition + rect.top - offset,
+              behavior: 'smooth',
+            })
+          }
+        }, 300)
+      }
     }
+  }
+
+  // Event handler for the Calculate button
+  const handleCalculate = () => {
+    performCalculation({
+      homePrice,
+      downPayment,
+      loanTerm,
+      interestRate,
+      annualTaxes,
+      annualInsurance,
+      monthlyHOA,
+      skipScrolling: false,
+    })
   }
 
   const handleReset = () => {
@@ -236,7 +339,7 @@ export const MonthlyPaymentCalculator = () => {
         <TermSelector
           label='Length of loan'
           options={[30, 20, 15, 10]}
-          defaultValue={30}
+          value={loanTerm}
           onChange={setLoanTerm}
         />
 
@@ -295,6 +398,15 @@ export const MonthlyPaymentCalculator = () => {
             homeInsurance={homeInsurance}
             hoaFees={hoaFees}
             onReset={handleReset}
+            formValues={{
+              homePrice,
+              downPayment,
+              loanTerm,
+              interestRate,
+              annualTaxes,
+              annualInsurance,
+              monthlyHOA,
+            }}
           />
         </div>
       )}

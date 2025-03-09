@@ -1,8 +1,11 @@
+import { useState, useMemo } from 'react'
 import { Button } from '../Button'
 import { formatCurrency } from '../../utils/calculateMonthlyPayment'
-import styles from './MonthlyPaymentResults.module.css'
-import { useMemo } from 'react'
+import { generateShortUrlHashForMonthlyPaymentCalculator } from '../../utils/monthlyPaymentParamHashing'
+import type { MonthlyPaymentFormValues } from '../../types/monthlyPaymentFormValues'
 import { PaymentCircle, PaymentSegment } from '../PaymentCircle'
+
+import styles from './MonthlyPaymentResults.module.css'
 
 interface MonthlyPaymentResultsProps {
   monthlyPayment: number
@@ -11,6 +14,7 @@ interface MonthlyPaymentResultsProps {
   homeInsurance: number
   hoaFees: number
   onReset?: () => void
+  formValues?: MonthlyPaymentFormValues
 }
 
 export const MonthlyPaymentResults = ({
@@ -20,7 +24,49 @@ export const MonthlyPaymentResults = ({
   homeInsurance,
   hoaFees,
   onReset,
+  formValues,
 }: MonthlyPaymentResultsProps) => {
+  const [shareButtonText, setShareButtonText] = useState('Share Results')
+  const [shareButtonDisabled, setShareButtonDisabled] = useState(false)
+
+  const handleShare = () => {
+    if (!formValues) return
+
+    try {
+      // Generate a short hash from the form values
+      const hash = generateShortUrlHashForMonthlyPaymentCalculator(formValues)
+
+      // Create the shareable URL with the hash parameter
+      const url = new URL(window.location.href)
+      url.search = `?p=${hash}`
+
+      // Copy the URL to clipboard
+      navigator.clipboard
+        .writeText(url.toString())
+        .then(() => {
+          // Update button text to provide feedback
+          setShareButtonText('Copied!')
+          setShareButtonDisabled(true)
+
+          // Reset button text after 2 seconds
+          setTimeout(() => {
+            setShareButtonText('Share Results')
+            setShareButtonDisabled(false)
+          }, 2000)
+        })
+        .catch(err => {
+          console.error('Failed to copy URL: ', err)
+          setShareButtonText('Failed to copy')
+
+          // Reset button text after 2 seconds
+          setTimeout(() => {
+            setShareButtonText('Share Results')
+          }, 2000)
+        })
+    } catch (error) {
+      console.error('Error generating shareable URL:', error)
+    }
+  }
   // Calculate payment segments and percentages
   const paymentSegments = useMemo(() => {
     const segments: PaymentSegment[] = [
@@ -96,15 +142,27 @@ export const MonthlyPaymentResults = ({
         </div>
       </div>
 
-      {onReset && (
-        <div className={styles.actionContainer}>
+      <div className={styles.actionContainer}>
+        {formValues && (
+          <div className={styles.buttonContainer}>
+            <Button
+              variant='secondary'
+              fullWidth
+              onClick={handleShare}
+              disabled={shareButtonDisabled}
+            >
+              {shareButtonText}
+            </Button>
+          </div>
+        )}
+        {onReset && (
           <div className={styles.buttonContainer}>
             <Button variant='secondary' fullWidth onClick={onReset}>
               Reset
             </Button>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }

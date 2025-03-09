@@ -15,14 +15,26 @@ src/
 │   ├── Header/
 │   ├── InfoSection/
 │   ├── InputField/
-│   └── MinMaxSlider/
+│   ├── MinMaxSlider/
+│   ├── MonthlyPaymentResults/
+│   ├── PaymentCircle/
+│   └── TermSelector/
 ├── layouts/        # Layout components for page structure
 │   └── MainLayout/
 ├── pages/          # Page components for different routes
-│   └── AffordabilityEstimator/
+│   ├── AffordabilityEstimator/
+│   └── MonthlyPaymentCalculator/
 ├── types/          # TypeScript type definitions
+│   ├── affordabilityFormValues.ts
+│   ├── monthlyPaymentFormValues.ts
+│   └── rangeValues.ts
 ├── test/           # Test setup and utilities
-└── utils/          # Utility functions and helpers (including mortgage calculations)
+│   └── utils/      # Test files for utility functions
+└── utils/          # Utility functions and helpers
+    ├── affordabilityParamHashing.ts
+    ├── calculateAffordabilityByDownpayment.ts
+    ├── calculateMonthlyPayment.ts
+    └── monthlyPaymentParamHashing.ts
 ```
 
 ## Component Pattern
@@ -137,10 +149,11 @@ A component for displaying the results of mortgage affordability calculations wi
 <AffordabilityEstimatorResults
   results={calculationResults}
   onReset={handleReset}
+  formValues={formValues}
 />
 ```
 
-The component renders expandable items for each property tax amount, showing the affordable house price range. When expanded, it displays a detailed breakdown of house prices for each interest rate.
+The component renders expandable items for each property tax amount, showing the affordable house price range. When expanded, it displays a detailed breakdown of house prices for each interest rate. It also includes a "Share Results" button that copies a URL with the current form values to the clipboard.
 
 ### PaymentCircle
 A visualization component that displays a segmented ring chart where each segment represents a payment component with a distinct color and sized proportionally to its percentage of the total.
@@ -164,10 +177,11 @@ A component for displaying the results of monthly payment calculations with a pa
   homeInsurance={homeInsurance}
   hoaFees={hoaFees}
   onReset={handleReset}
+  formValues={formValues}
 />
 ```
 
-The component uses the PaymentCircle component to visualize the payment breakdown and provides a detailed list of the payment components: principal & interest, property tax, home insurance, and HOA fees. Each item in the breakdown includes a color indicator that matches its segment in the circle chart and displays both the monetary value and percentage of the total payment.
+The component uses the PaymentCircle component to visualize the payment breakdown and provides a detailed list of the payment components: principal & interest, property tax, home insurance, and HOA fees. Each item in the breakdown includes a color indicator that matches its segment in the circle chart and displays both the monetary value and percentage of the total payment. It also includes a "Share Results" button that copies a URL with the current form values to the clipboard.
 
 ## State Management
 - Local component state using React's useState hook for component-specific state
@@ -180,15 +194,20 @@ The component uses the PaymentCircle component to visualize the payment breakdow
 ## URL Parameter Sharing
 - URL parameters for sharing calculator results with others
 - Standard URL query parameters for basic sharing (e.g., `?mp=2000&dp=80000&irmin=4&irmax=6`)
-- Compact hash parameter for shorter URLs (e.g., `?params=a1b2c3d4e5`)
+- Compact hash parameter for shorter URLs (e.g., `?p=a1b2c3d4e5`)
 - Automatic form population and calculation when loading with URL parameters
 - Share button in results section for copying URL to clipboard
+- Binary encoding and Base64 URL-safe conversion for compact parameter representation
+- Dedicated parameter hashing utilities for each calculator:
+  - `affordabilityParamHashing.ts` for the Affordability Estimator
+  - `monthlyPaymentParamHashing.ts` for the Monthly Payment Calculator
 
 ## Testing Strategy
 - Unit tests for individual components and utilities
 - Integration tests for component interactions
 - Vitest as the test runner
 - React Testing Library for component testing
+- Comprehensive test suite for URL parameter handling and parameter hashing
 
 ## Styling Approach
 - CSS Modules for component-specific styles
@@ -200,6 +219,8 @@ The component uses the PaymentCircle component to visualize the payment breakdow
 
 ## Type Safety
 - TypeScript interfaces for component props
-- Type definitions for form state
+- Type definitions for form state:
+  - `AffordabilityFormValues` for the Affordability Estimator
+  - `MonthlyPaymentFormValues` for the Monthly Payment Calculator
 - Record types for error handling
 - Strict type checking enabled
