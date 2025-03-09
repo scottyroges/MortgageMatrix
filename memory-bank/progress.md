@@ -11,6 +11,7 @@
 - ✅ MainLayout component
 - ✅ Home page component with Home Affordability Estimator
 - ✅ Monthly Payment Calculator page
+- ✅ How It Works page with detailed explanations of both calculators
 - ✅ Memory Bank documentation
 - ✅ InputField component with currency formatting
 - ✅ MinMaxSlider component for selecting ranges with dual thumbs
@@ -47,7 +48,7 @@
 - 🔲 Unit and integration tests for new components
 
 ## Current Status
-The project has progressed from initial setup to having two fully functional calculator screens. We have implemented both the Home Affordability Estimator and the Monthly Payment Calculator with all the necessary UI components according to the designs. 
+The project has progressed from initial setup to having two fully functional calculator screens. We have implemented both the Home Affordability Estimator and the Monthly Payment Calculator with all the necessary UI components according to the designs. We've also enhanced the How It Works page with detailed explanations of both calculators, providing users with clear information about how the calculations work.
 
 For the Home Affordability Estimator, the form inputs, sliders, and expandable results section are all working as expected with actual calculation data. We've created a dedicated AffordabilityEstimatorResults component to display the calculation results in a clean, organized way.
 

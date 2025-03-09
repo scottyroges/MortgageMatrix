@@ -14,6 +14,7 @@ The current focus is on implementing the core calculator screens of the Mortgage
 ## Recent Changes
 
 - Implemented the first two screens of the Mortgage Matrix app (Home Affordability Estimator and Monthly Payment Calculator)
+- Added a detailed section to the "How It Works" page explaining the Monthly Payment Calculator functionality
 - Created several reusable components:
   - InputField: For monetary inputs with dollar sign prefix and formatting
   - MinMaxSlider: For selecting ranges like interest rates and property taxes with dual thumbs

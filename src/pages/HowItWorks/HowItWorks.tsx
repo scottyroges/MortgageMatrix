@@ -167,6 +167,147 @@ export const HowItWorks = () => {
         </section>
 
         <section className={styles.section}>
+          <h2>Monthly Payment Calculator</h2>
+          <p>
+            The Monthly Payment Calculator helps you determine your total monthly
+            mortgage payment based on your home price and loan details. Here's how
+            it works:
+          </p>
+
+          <h3>Input Parameters</h3>
+          <ul className={styles.list}>
+            <li>
+              <strong>Home Price:</strong> The total purchase price of the home
+              you're considering.
+            </li>
+            <li>
+              <strong>Down Payment:</strong> The amount you plan to pay upfront,
+              shown both as a dollar amount and as a percentage of the home price.
+            </li>
+            <li>
+              <strong>Length of Loan:</strong> The term of your mortgage in years
+              (typically 30, 20, 15, or 10 years).
+            </li>
+            <li>
+              <strong>Interest Rate:</strong> The annual interest rate for your
+              mortgage.
+            </li>
+            <li>
+              <strong>Taxes Annually:</strong> The estimated annual property taxes
+              for the home.
+            </li>
+            <li>
+              <strong>Insurance Annually:</strong> The estimated annual cost of
+              homeowners insurance.
+            </li>
+            <li>
+              <strong>HOA Monthly:</strong> Any monthly homeowners association
+              fees (if applicable).
+            </li>
+          </ul>
+
+          <div className={styles.callout}>
+            <p>
+              <strong>Pro Tip:</strong> A shorter loan term typically means higher
+              monthly payments but less interest paid over the life of the loan.
+            </p>
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h2>Monthly Payment Calculation Process</h2>
+
+          <h3>Step 1: Calculate Loan Amount</h3>
+          <p>
+            We subtract your down payment from the home price to determine the
+            loan amount.
+          </p>
+
+          <div className={styles.formula}>
+            Loan Amount = Home Price - Down Payment
+          </div>
+
+          <h3>Step 2: Calculate Principal and Interest Payment</h3>
+          <p>
+            Using the loan amount, interest rate, and loan term, we calculate
+            the monthly principal and interest payment using the standard
+            mortgage amortization formula.
+          </p>
+
+          <div className={styles.formula}>
+            Principal & Interest = Loan Amount × [r(1+r)ⁿ] ÷ [(1+r)ⁿ-1]
+            <br />
+            Where:
+            <br />
+            r = Monthly interest rate (annual rate ÷ 12 ÷ 100)
+            <br />
+            n = Total number of payments (loan term in years × 12)
+          </div>
+
+          <h3>Step 3: Calculate Monthly Tax and Insurance</h3>
+          <p>
+            We convert the annual property tax and insurance amounts to monthly
+            figures by dividing by 12.
+          </p>
+
+          <div className={styles.formula}>
+            Monthly Property Tax = Annual Property Tax ÷ 12
+            <br />
+            Monthly Insurance = Annual Insurance ÷ 12
+          </div>
+
+          <h3>Step 4: Calculate Total Monthly Payment</h3>
+          <p>
+            We add the principal and interest payment, monthly property tax,
+            monthly insurance, and any HOA fees to determine your total monthly
+            payment.
+          </p>
+
+          <div className={styles.formula}>
+            Total Monthly Payment = Principal & Interest + Monthly Property Tax + Monthly Insurance + Monthly HOA
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h2>Understanding the Payment Breakdown</h2>
+          <p>
+            The results show your total monthly payment with a visual breakdown
+            of each component:
+          </p>
+          <ul className={styles.list}>
+            <li>
+              <strong>Principal & Interest:</strong> The portion of your payment
+              that goes toward paying off the loan and interest (shown in green).
+            </li>
+            <li>
+              <strong>Property Tax:</strong> The portion that covers your property
+              taxes (shown in blue).
+            </li>
+            <li>
+              <strong>Home Insurance:</strong> The portion that covers your
+              homeowners insurance (shown in amber).
+            </li>
+            <li>
+              <strong>HOA Fees:</strong> Any homeowners association fees (shown
+              in red).
+            </li>
+          </ul>
+          <p>
+            Each component is displayed with both the dollar amount and the
+            percentage of your total monthly payment, helping you understand
+            where your money is going each month.
+          </p>
+
+          <div className={styles.note}>
+            <p>
+              <strong>Note:</strong> In most cases, principal and interest will
+              be the largest portion of your payment, but property taxes can also
+              be significant depending on your location.
+            </p>
+          </div>
+        </section>
+
+        <section className={styles.section}>
           <h2>Making Informed Decisions</h2>
           <p>While our calculator provides valuable insights, we recommend:</p>
           <ul className={styles.list}>
