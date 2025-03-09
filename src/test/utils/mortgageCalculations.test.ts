@@ -88,7 +88,7 @@ describe('formatCurrency', () => {
     expect(formatCurrency(1000)).toBe('$1,000')
     expect(formatCurrency(1000000)).toBe('$1,000,000')
     expect(formatCurrency(0)).toBe('$0')
-    expect(formatCurrency(-1000)).toBe('-$1,000')
+    expect(formatCurrency(-1000)).toBe('Out of Budget')
   })
 })
 

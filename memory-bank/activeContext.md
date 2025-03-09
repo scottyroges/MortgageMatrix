@@ -79,6 +79,8 @@ The current focus is on implementing the core calculator screens of the Mortgage
 5. Enhance accessibility features
 6. Add more detailed payment breakdowns and visualizations
 7. Add more visualization components for mortgage data (amortization charts, etc.)
+8. Extend URL parameter sharing to other calculator pages
+9. Add social sharing capabilities for calculator results
 
 ## Current Challenges
 

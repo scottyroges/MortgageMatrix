@@ -175,6 +175,14 @@ The component uses the PaymentCircle component to visualize the payment breakdow
 - Validation state for form errors
 - UI state for expandable items and other interactive elements
 - Context API for shared state when needed (future implementation)
+- URL parameter state persistence for sharing calculator results
+
+## URL Parameter Sharing
+- URL parameters for sharing calculator results with others
+- Standard URL query parameters for basic sharing (e.g., `?mp=2000&dp=80000&irmin=4&irmax=6`)
+- Compact hash parameter for shorter URLs (e.g., `?params=a1b2c3d4e5`)
+- Automatic form population and calculation when loading with URL parameters
+- Share button in results section for copying URL to clipboard
 
 ## Testing Strategy
 - Unit tests for individual components and utilities

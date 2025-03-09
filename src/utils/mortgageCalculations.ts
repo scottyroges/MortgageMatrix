@@ -2,6 +2,8 @@
  * Mortgage calculation utilities
  */
 
+import { AffordabilityByDownPayment } from '../types/affordabilityByDownPayment'
+
 /**
  * Calculates the present value of an investment
  * This is equivalent to Excel's PV function
@@ -50,19 +52,6 @@ export const generateRange = (
   }
   return result
 }
-
-export interface HousePricePoint {
-  interestRate: number
-  housePrice: number
-}
-
-export interface PriceRangeData {
-  min: number
-  max: number
-  housePrices: HousePricePoint[]
-}
-
-export type AffordabilityByDownPayment = Record<string, PriceRangeData>
 
 /**
  * Calculates affordable house prices based on desired payment, interest rates, and property taxes

@@ -35,6 +35,11 @@
 - ✅ PaymentCircle component for visualizing payment breakdown as a segmented ring chart with color-coded segments
 - ✅ Integration of UI with calculation logic to display actual affordable house prices and monthly payments
 - ✅ Enhanced visualization of monthly payment breakdown with color-coded segments and percentage display
+- ✅ URL parameter sharing for Affordability Estimator calculations
+- ✅ Share button for copying calculation URLs to clipboard
+- ✅ Compact URL parameter hashing for shorter shareable URLs
+- ✅ Automatic calculation when loading page with URL parameters
+- ✅ Comprehensive test suite for URL parameter handling and parameter hashing
 
 ## What's Left to Build
 - 🔲 Advanced form validation

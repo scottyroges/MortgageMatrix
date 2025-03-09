@@ -169,9 +169,9 @@ export const HowItWorks = () => {
         <section className={styles.section}>
           <h2>Monthly Payment Calculator</h2>
           <p>
-            The Monthly Payment Calculator helps you determine your total monthly
-            mortgage payment based on your home price and loan details. Here's how
-            it works:
+            The Monthly Payment Calculator helps you determine your total
+            monthly mortgage payment based on your home price and loan details.
+            Here's how it works:
           </p>
 
           <h3>Input Parameters</h3>
@@ -182,19 +182,20 @@ export const HowItWorks = () => {
             </li>
             <li>
               <strong>Down Payment:</strong> The amount you plan to pay upfront,
-              shown both as a dollar amount and as a percentage of the home price.
+              shown both as a dollar amount and as a percentage of the home
+              price.
             </li>
             <li>
-              <strong>Length of Loan:</strong> The term of your mortgage in years
-              (typically 30, 20, 15, or 10 years).
+              <strong>Length of Loan:</strong> The term of your mortgage in
+              years (typically 30, 20, 15, or 10 years).
             </li>
             <li>
               <strong>Interest Rate:</strong> The annual interest rate for your
               mortgage.
             </li>
             <li>
-              <strong>Taxes Annually:</strong> The estimated annual property taxes
-              for the home.
+              <strong>Taxes Annually:</strong> The estimated annual property
+              taxes for the home.
             </li>
             <li>
               <strong>Insurance Annually:</strong> The estimated annual cost of
@@ -208,8 +209,9 @@ export const HowItWorks = () => {
 
           <div className={styles.callout}>
             <p>
-              <strong>Pro Tip:</strong> A shorter loan term typically means higher
-              monthly payments but less interest paid over the life of the loan.
+              <strong>Pro Tip:</strong> A shorter loan term typically means
+              higher monthly payments but less interest paid over the life of
+              the loan.
             </p>
           </div>
         </section>
@@ -240,8 +242,7 @@ export const HowItWorks = () => {
             Where:
             <br />
             r = Monthly interest rate (annual rate ÷ 12 ÷ 100)
-            <br />
-            n = Total number of payments (loan term in years × 12)
+            <br />n = Total number of payments (loan term in years × 12)
           </div>
 
           <h3>Step 3: Calculate Monthly Tax and Insurance</h3>
@@ -264,7 +265,8 @@ export const HowItWorks = () => {
           </p>
 
           <div className={styles.formula}>
-            Total Monthly Payment = Principal & Interest + Monthly Property Tax + Monthly Insurance + Monthly HOA
+            Total Monthly Payment = Principal & Interest + Monthly Property Tax
+            + Monthly Insurance + Monthly HOA
           </div>
         </section>
 
@@ -277,11 +279,12 @@ export const HowItWorks = () => {
           <ul className={styles.list}>
             <li>
               <strong>Principal & Interest:</strong> The portion of your payment
-              that goes toward paying off the loan and interest (shown in green).
+              that goes toward paying off the loan and interest (shown in
+              green).
             </li>
             <li>
-              <strong>Property Tax:</strong> The portion that covers your property
-              taxes (shown in blue).
+              <strong>Property Tax:</strong> The portion that covers your
+              property taxes (shown in blue).
             </li>
             <li>
               <strong>Home Insurance:</strong> The portion that covers your
@@ -301,8 +304,8 @@ export const HowItWorks = () => {
           <div className={styles.note}>
             <p>
               <strong>Note:</strong> In most cases, principal and interest will
-              be the largest portion of your payment, but property taxes can also
-              be significant depending on your location.
+              be the largest portion of your payment, but property taxes can
+              also be significant depending on your location.
             </p>
           </div>
         </section>
