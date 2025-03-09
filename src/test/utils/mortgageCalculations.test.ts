@@ -5,7 +5,7 @@ import {
   calculateAffordableHousePrices,
   formatCurrency,
   formatPriceRange,
-} from '../../utils/mortgageCalculations'
+} from '../../utils/calculateAffordabilityByDownpayment'
 
 describe('calculatePV', () => {
   it('should calculate present value correctly for non-zero rate', () => {

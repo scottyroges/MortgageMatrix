@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import {
-  generateShortUrlHash,
-  parseShortUrlHash,
-} from '../../utils/paramHashing'
+  generateShortUrlHashForAffordabilityEstimator,
+  parseShortUrlHashForAffordabilityEstimator,
+} from '../../utils/affordabilityParamHashing'
 import type { AffordabilityFormValues } from '../../types/affordabilityFormValues'
 
 describe('Parameter Hashing Utilities', () => {
@@ -24,14 +24,14 @@ describe('Parameter Hashing Utilities', () => {
   describe('encodeFormValues and decodeFormValues', () => {
     it('should encode and decode form values correctly', () => {
       // Encode the form values
-      const hash = generateShortUrlHash(mockFormValues)
+      const hash = generateShortUrlHashForAffordabilityEstimator(mockFormValues)
 
       // Verify hash is a non-empty string
       expect(hash).toBeTruthy()
       expect(typeof hash).toBe('string')
 
       // Decode the hash back to form values
-      const decodedValues = parseShortUrlHash(hash)
+      const decodedValues = parseShortUrlHashForAffordabilityEstimator(hash)
 
       // Verify decoded values match original values
       expect(decodedValues.monthlyPayment).toBe(mockFormValues.monthlyPayment)
@@ -69,8 +69,8 @@ describe('Parameter Hashing Utilities', () => {
       }
 
       // Encode and decode
-      const hash = generateShortUrlHash(edgeCaseValues)
-      const decodedValues = parseShortUrlHash(hash)
+      const hash = generateShortUrlHashForAffordabilityEstimator(edgeCaseValues)
+      const decodedValues = parseShortUrlHashForAffordabilityEstimator(hash)
 
       // Verify decoded values match original values
       expect(decodedValues.monthlyPayment).toBe(edgeCaseValues.monthlyPayment)
@@ -94,7 +94,7 @@ describe('Parameter Hashing Utilities', () => {
 
   describe('generateShortUrlHash', () => {
     it('should generate a hash string from form values', () => {
-      const hash = generateShortUrlHash(mockFormValues)
+      const hash = generateShortUrlHashForAffordabilityEstimator(mockFormValues)
 
       // Verify hash is a non-empty string
       expect(hash).toBeTruthy()
@@ -110,10 +110,10 @@ describe('Parameter Hashing Utilities', () => {
   describe('parseShortUrlHash', () => {
     it('should parse a hash string back into form values', () => {
       // Generate a hash
-      const hash = generateShortUrlHash(mockFormValues)
+      const hash = generateShortUrlHashForAffordabilityEstimator(mockFormValues)
 
       // Parse the hash
-      const parsedValues = parseShortUrlHash(hash)
+      const parsedValues = parseShortUrlHashForAffordabilityEstimator(hash)
 
       // Verify parsed values match original values
       expect(parsedValues.monthlyPayment).toBe(mockFormValues.monthlyPayment)
@@ -135,7 +135,9 @@ describe('Parameter Hashing Utilities', () => {
     })
 
     it('should throw an error for invalid hash strings', () => {
-      expect(() => parseShortUrlHash('invalid-hash')).toThrow()
+      expect(() =>
+        parseShortUrlHashForAffordabilityEstimator('invalid-hash'),
+      ).toThrow()
     })
   })
 })

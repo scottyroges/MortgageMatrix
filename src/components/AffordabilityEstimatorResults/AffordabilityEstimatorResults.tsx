@@ -4,8 +4,8 @@ import { Button } from '../Button'
 import {
   formatCurrency,
   formatPriceRange,
-} from '../../utils/mortgageCalculations'
-import { generateShortUrlHash } from '../../utils/paramHashing'
+} from '../../utils/calculateAffordabilityByDownpayment'
+import { generateShortUrlHashForAffordabilityEstimator } from '../../utils/affordabilityParamHashing'
 import type { AffordabilityFormValues } from '../../types/affordabilityFormValues'
 
 import styles from './AffordabilityEstimatorResults.module.css'
@@ -30,7 +30,7 @@ export const AffordabilityEstimatorResults = ({
 
     try {
       // Generate a short hash from the form values
-      const hash = generateShortUrlHash(formValues)
+      const hash = generateShortUrlHashForAffordabilityEstimator(formValues)
 
       // Create the shareable URL with the hash parameter
       const url = new URL(window.location.href)

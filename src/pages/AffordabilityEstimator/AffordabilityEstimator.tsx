@@ -1,12 +1,15 @@
 import { useState, useRef, useEffect } from 'react'
 
 import { Button } from '../../components/Button'
-import { calculateAffordableHousePrices } from '../../utils/mortgageCalculations'
+import { calculateAffordableHousePrices } from '../../utils/calculateAffordabilityByDownpayment'
 import { InfoSection } from '../../components/InfoSection'
 import { InputField } from '../../components/InputField'
 import { MinMaxSlider } from '../../components/MinMaxSlider'
 import { AffordabilityEstimatorResults } from '../../components/AffordabilityEstimatorResults'
-import { parseShortUrlHash, updateBrowserUrl } from '../../utils/paramHashing'
+import {
+  parseShortUrlHashForAffordabilityEstimator,
+  updateBrowserUrlForAffordabilityEstimator,
+} from '../../utils/affordabilityParamHashing'
 import type { RangeValues } from '../../types/rangeValues'
 import type { AffordabilityByDownPayment } from '../../types/affordabilityByDownPayment'
 import type { AffordabilityFormValues } from '../../types/affordabilityFormValues'
@@ -46,7 +49,7 @@ export const AffordabilityEstimator = () => {
     // Try to parse from hash parameter first (short URL)
     if (hashParam) {
       try {
-        formValues = parseShortUrlHash(hashParam)
+        formValues = parseShortUrlHashForAffordabilityEstimator(hashParam)
       } catch (error) {
         console.error('Error parsing hash parameter:', error)
       }
@@ -142,7 +145,7 @@ export const AffordabilityEstimator = () => {
       setCalculationResults(results)
 
       // Update URL with form parameters
-      updateBrowserUrl({
+      updateBrowserUrlForAffordabilityEstimator({
         monthlyPayment,
         downPayment,
         interestRateRange,

@@ -4,19 +4,16 @@
 
 import type { AffordabilityFormValues } from '../types/affordabilityFormValues'
 
-
 /**
  * Updates the browser URL with form parameters without reloading the page
  *
  * @param values - The form values
  */
-export const updateBrowserUrl = (values: AffordabilityFormValues): void => {
-  const hash = generateShortUrlHash(values)
-  window.history.replaceState(
-    {},
-    '',
-    `${window.location.pathname}?p=${hash}`,
-  )
+export const updateBrowserUrlForAffordabilityEstimator = (
+  values: AffordabilityFormValues,
+): void => {
+  const hash = generateShortUrlHashForAffordabilityEstimator(values)
+  window.history.replaceState({}, '', `${window.location.pathname}?p=${hash}`)
 }
 
 /**
@@ -25,7 +22,9 @@ export const updateBrowserUrl = (values: AffordabilityFormValues): void => {
  * @param values - The form values to encode
  * @returns A compact hash string
  */
-export const generateShortUrlHash = (values: AffordabilityFormValues): string => {
+export const generateShortUrlHashForAffordabilityEstimator = (
+  values: AffordabilityFormValues,
+): string => {
   // Convert form values to a more compact representation
   // We'll use a binary buffer to store the values efficiently
 
@@ -97,7 +96,9 @@ export const generateShortUrlHash = (values: AffordabilityFormValues): string =>
  * @param hash - The hash string to decode
  * @returns The decoded form values
  */
-export const parseShortUrlHash = (hash: string): AffordabilityFormValues => {
+export const parseShortUrlHashForAffordabilityEstimator = (
+  hash: string,
+): AffordabilityFormValues => {
   // 1. Convert URL-safe Base64 back to regular Base64
   const base64 = hash.replace(/-/g, '+').replace(/_/g, '/')
 
