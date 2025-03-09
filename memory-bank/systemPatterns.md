@@ -23,7 +23,11 @@ src/
 │   └── MainLayout/
 ├── pages/          # Page components for different routes
 │   ├── AffordabilityEstimator/
-│   └── MonthlyPaymentCalculator/
+│   ├── ContactUs/
+│   ├── HowItWorks/
+│   ├── MonthlyPaymentCalculator/
+│   ├── PrivacyPolicy/
+│   └── TermsOfService/
 ├── types/          # TypeScript type definitions
 │   ├── affordabilityFormValues.ts
 │   ├── monthlyPaymentFormValues.ts

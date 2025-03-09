@@ -16,6 +16,8 @@ Monthly Payment Calculator, and are now enhancing them with additional functiona
 
 ## Recent Changes
 
+- Created a Contact Us page with email contact information (info@mortgagematrix.me)
+- Updated the Footer component to link to the new Contact Us page
 - Implemented the first two screens of the Mortgage Matrix app (Home
   Affordability Estimator and Monthly Payment Calculator)
 - Added URL parameter sharing functionality to both calculator screens
@@ -103,6 +105,7 @@ Monthly Payment Calculator, and are now enhancing them with additional functiona
 7. Add more visualization components for mortgage data (amortization charts,
    etc.)
 8. Add social sharing capabilities for calculator results
+9. Enhance the Contact Us page with a contact form
 
 ## Current Challenges
 
