@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 import { Button } from '../../components/Button'
 import { calculateAffordableHousePrices } from '../../utils/mortgageCalculations'
@@ -52,6 +52,9 @@ export const AffordabilityEstimator = () => {
     return Object.keys(newErrors).length === 0
   }
 
+  // Ref for results section
+  const resultsRef = useRef<HTMLDivElement>(null)
+
   const handleCalculate = () => {
     if (validateForm()) {
       // Parse input values
@@ -77,6 +80,19 @@ export const AffordabilityEstimator = () => {
       // Store results and show results section
       setCalculationResults(results)
       setShowResults(true)
+
+      // Scroll to results after a short delay to ensure the results are rendered
+      setTimeout(() => {
+        const element = resultsRef.current
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          const offset = 50 // Adjust this value (in pixels) to your needs
+          document.querySelector('body')?.scrollTo({
+            top: window.pageYOffset + rect.top - offset,
+            behavior: 'smooth',
+          })
+        }
+      }, 100)
     }
   }
 
@@ -91,6 +107,15 @@ export const AffordabilityEstimator = () => {
 
     // Hide results when reset is clicked
     setShowResults(false)
+
+    // Scroll back to the top of the page
+    setTimeout(() => {
+      document.querySelector('body')?.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+    }, 100)
+    
   }
 
   return (
@@ -156,10 +181,12 @@ export const AffordabilityEstimator = () => {
       </div>
 
       {showResults && calculationResults && (
-        <AffordabilityEstimatorResults
-          results={calculationResults}
-          onReset={handleReset}
-        />
+        <div ref={resultsRef}>
+          <AffordabilityEstimatorResults
+            results={calculationResults}
+            onReset={handleReset}
+          />
+        </div>
       )}
 
       <InfoSection
