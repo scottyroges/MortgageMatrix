@@ -4,9 +4,7 @@ import { InfoSection } from '../../components/InfoSection'
 import { InputField } from '../../components/InputField'
 import { MonthlyPaymentResults } from '../../components/MonthlyPaymentResults'
 import { TermSelector } from '../../components/TermSelector'
-import {
-  calculateMonthlyPayment
-} from '../../utils/calculateMonthlyPayment'
+import { calculateMonthlyPayment } from '../../utils/calculateMonthlyPayment'
 
 import styles from './MonthlyPaymentCalculator.module.css'
 

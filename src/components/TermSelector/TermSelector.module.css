@@ -6,7 +6,7 @@
   display: block;
   margin-bottom: 0.5rem;
   font-size: 1rem;
-  color: #1F2937;
+  color: #1f2937;
 }
 
 .buttonGroup {
@@ -17,18 +17,18 @@
 .button {
   flex: 1;
   padding: 0.75rem 1rem;
-  background-color: #F9FAFB;
-  border: 1px solid #E5E7EB;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
   border-radius: 0.25rem;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 1rem;
-  color: #1F2937;
+  color: #1f2937;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .button:hover {
-  background-color: #F3F4F6;
+  background-color: #f3f4f6;
 }
 
 .selected {

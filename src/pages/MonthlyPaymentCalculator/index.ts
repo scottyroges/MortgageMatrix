@@ -1,1 +1,1 @@
-export { MonthlyPaymentCalculator } from './MonthlyPaymentCalculator';
+export { MonthlyPaymentCalculator } from './MonthlyPaymentCalculator'

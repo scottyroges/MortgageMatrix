@@ -1,1 +1,1 @@
-export { TermSelector } from './TermSelector';
+export { TermSelector } from './TermSelector'

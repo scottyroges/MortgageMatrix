@@ -51,30 +51,36 @@ export const MonthlyPaymentResults = ({
     ]
 
     // Calculate percentages
-    segments.forEach((segment) => {
+    segments.forEach(segment => {
       segment.percentage = (segment.value / monthlyPayment) * 100
     })
 
     return segments
-  }, [principalAndInterest, propertyTax, homeInsurance, hoaFees, monthlyPayment])
+  }, [
+    principalAndInterest,
+    propertyTax,
+    homeInsurance,
+    hoaFees,
+    monthlyPayment,
+  ])
 
   return (
     <div className={styles.resultsSection}>
       <div className={styles.resultsContainer}>
         <h3 className={styles.resultsTitle}>Monthly Payment</h3>
-        
-        <PaymentCircle 
+
+        <PaymentCircle
           segments={paymentSegments}
           totalAmount={monthlyPayment}
           formatCurrency={formatCurrency}
         />
 
         <div className={styles.paymentBreakdown}>
-          {paymentSegments.map((segment) => (
+          {paymentSegments.map(segment => (
             <div key={segment.name} className={styles.breakdownItem}>
               <div className={styles.breakdownLabelContainer}>
-                <span 
-                  className={styles.colorIndicator} 
+                <span
+                  className={styles.colorIndicator}
                   style={{ backgroundColor: segment.color }}
                 />
                 <span className={styles.breakdownLabel}>{segment.name}</span>

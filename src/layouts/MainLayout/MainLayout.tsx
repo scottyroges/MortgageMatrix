@@ -1,23 +1,23 @@
-import { ReactNode, useState } from 'react';
-import { Header } from '../../components/Header';
-import { Footer } from '../../components/Footer';
-import { Navigation } from '../../components/Navigation';
-import styles from './MainLayout.module.css';
+import { ReactNode, useState } from 'react'
+import { Header } from '../../components/Header'
+import { Footer } from '../../components/Footer'
+import { Navigation } from '../../components/Navigation'
+import styles from './MainLayout.module.css'
 
 interface MainLayoutProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+    setIsMenuOpen(!isMenuOpen)
+  }
 
   const handleMenuClose = () => {
-    setIsMenuOpen(false);
-  };
+    setIsMenuOpen(false)
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -28,5 +28,5 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       </main>
       <Footer />
     </div>
-  );
-};
+  )
+}

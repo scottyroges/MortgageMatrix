@@ -11,7 +11,7 @@
 }
 
 .content {
-  color: #1F2937;
+  color: #1f2937;
 }
 
 .section {
@@ -37,11 +37,11 @@
   .container {
     padding: 0.5rem;
   }
-  
+
   .title {
     font-size: 1.75rem;
   }
-  
+
   .section h2 {
     font-size: 1.25rem;
   }

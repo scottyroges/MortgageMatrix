@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import styles from './TermSelector.module.css';
+import { useState } from 'react'
+import styles from './TermSelector.module.css'
 
 interface TermSelectorProps {
-  options: number[];
-  defaultValue?: number;
-  onChange: (value: number) => void;
-  label: string;
+  options: number[]
+  defaultValue?: number
+  onChange: (value: number) => void
+  label: string
 }
 
 export const TermSelector = ({
@@ -15,22 +15,22 @@ export const TermSelector = ({
   label,
 }: TermSelectorProps) => {
   const [selectedValue, setSelectedValue] = useState<number>(
-    defaultValue || options[0]
-  );
+    defaultValue || options[0],
+  )
 
   const handleSelect = (value: number) => {
-    setSelectedValue(value);
-    onChange(value);
-  };
+    setSelectedValue(value)
+    onChange(value)
+  }
 
   return (
     <div className={styles.container}>
       <label className={styles.label}>{label}</label>
       <div className={styles.buttonGroup}>
-        {options.map((option) => (
+        {options.map(option => (
           <button
             key={option}
-            type="button"
+            type='button'
             className={`${styles.button} ${
               selectedValue === option ? styles.selected : ''
             }`}
@@ -41,5 +41,5 @@ export const TermSelector = ({
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
