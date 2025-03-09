@@ -75,8 +75,6 @@ export const AffordabilityEstimator = () => {
         hoaValue,
       )
 
-      console.log('Calculation results:', results)
-
       // Store results and show results section
       setCalculationResults(results)
       setShowResults(true)
@@ -86,13 +84,14 @@ export const AffordabilityEstimator = () => {
         const element = resultsRef.current
         if (element) {
           const rect = element.getBoundingClientRect()
-          const offset = 50 // Adjust this value (in pixels) to your needs
+          const offset = 50
+          const scrollPosition = document.querySelector('body')?.scrollTop ?? 0
           document.querySelector('body')?.scrollTo({
-            top: window.pageYOffset + rect.top - offset,
+            top: scrollPosition + rect.top - offset,
             behavior: 'smooth',
           })
         }
-      }, 100)
+      }, 300)
     }
   }
 
@@ -115,7 +114,6 @@ export const AffordabilityEstimator = () => {
         behavior: 'smooth',
       })
     }, 100)
-    
   }
 
   return (
