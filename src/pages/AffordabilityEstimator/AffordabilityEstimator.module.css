@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.formSection {
+  padding: 0.5rem 1rem 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  margin-bottom: 1.5rem;
+  color: #111827;
+}
+
+.rowInputs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.inputHalf {
+  flex: 1;
+}
+
+.buttonContainer {
+  margin-bottom: 1rem;
+}
+
+.actionContainer {
+  margin-top: 1rem;
+  padding: 1.5rem 1rem;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  border: none;
+  color: #4b5563;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.iconButton:hover {
+  background-color: #e5e7eb;
+}
+
+.resultsContainer {
+  background-color: #111827;
+  color: white;
+  padding: 1.5rem 1rem;
+}
+
+.resultsTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.expandedContent {
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+  color: #d1d5db;
+}

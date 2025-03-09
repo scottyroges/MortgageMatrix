@@ -1,0 +1,55 @@
+.container {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background-color: #f9fafb;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.focused {
+  border-color: #059669;
+  box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.1);
+}
+
+.error {
+  border-color: #ef4444;
+}
+
+.prefix {
+  padding: 0.75rem 0.5rem 0.75rem 1rem;
+  color: #6b7280;
+  font-weight: 500;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  padding: 0.75rem 1rem 0.75rem 0.25rem;
+  font-size: 1rem;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  color: #1f2937;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.errorText {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}

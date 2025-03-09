@@ -1,0 +1,39 @@
+# Mortgage Matrix Project Rules
+
+## Project Structure
+- Components are organized in their own directories with the pattern:
+  - ComponentName/
+    - ComponentName.tsx
+    - ComponentName.module.css
+    - ComponentName.test.tsx
+    - index.ts
+- Use index.ts files for clean exports
+- Group related components in logical directories
+
+## Coding Standards
+- Use TypeScript for all code files
+- Use functional components with hooks
+- Use named exports for components (export const Component = ...)
+- Use CSS Modules for component styling
+- Follow consistent naming conventions:
+  - PascalCase for component names
+  - camelCase for variables, functions, and instances
+  - kebab-case for CSS class names
+
+## Testing Practices
+- Write tests for all components
+- Use Vitest as the test runner
+- Use React Testing Library for component testing
+- Focus on testing behavior, not implementation details
+
+## Styling Guidelines
+- Use CSS Modules for component-specific styles
+- Use semantic HTML elements
+- Design with accessibility in mind
+- Ensure responsive design for all components
+
+## Memory Bank Maintenance
+- Update Memory Bank files when making significant changes
+- Keep activeContext.md and progress.md up to date
+- Document new patterns in systemPatterns.md
+- Update techContext.md when adding new dependencies

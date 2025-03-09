@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  flex: 1;
+}
+
+.content {
+  padding: 0;
+}
+
+/* Add padding back for larger screens */
+@media (min-width: 640px) {
+  .container {
+    padding: 0.5rem 1rem;
+  }
+
+  .content {
+    padding: 0.5rem 0;
+  }
+}
