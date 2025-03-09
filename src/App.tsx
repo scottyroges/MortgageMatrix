@@ -5,6 +5,7 @@ import { HowItWorks } from './pages/HowItWorks'
 import { MonthlyPaymentCalculator } from './pages/MonthlyPaymentCalculator'
 import { PrivacyPolicy } from './pages/PrivacyPolicy'
 import { TermsOfService } from './pages/TermsOfService'
+import { ContactUs } from './pages/ContactUs'
 import { ScrollToTop } from './components/ScrollToTop'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
@@ -30,6 +31,7 @@ const App = () => {
           />
           <Route path='/privacy-policy' element={<PrivacyPolicy />} />
           <Route path='/terms-of-service' element={<TermsOfService />} />
+          <Route path='/contact-us' element={<ContactUs />} />
           <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>
       </MainLayout>

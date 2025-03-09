@@ -11,9 +11,9 @@ export const Footer = () => {
         <Link to='/terms-of-service' className={styles.link}>
           Terms of Service
         </Link>
-        <a href='#' className={styles.link}>
+        <Link to='/contact-us' className={styles.link}>
           Contact Us
-        </a>
+        </Link>
       </div>
       <div className={styles.copyright}>
         © 2025 Mortgage Matrix. All rights reserved.
