@@ -1,39 +1,36 @@
 .container {
-  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 1rem;
+}
+
+.formSection {
+  padding: 0.5rem 1rem 1rem;
 }
 
 .title {
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  margin-bottom: 1.5rem;
   color: #111827;
 }
 
-.content {
-  color: #1F2937;
+.rowInputs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.placeholder {
-  background-color: #f3f4f6;
-  padding: 2rem;
-  border-radius: 0.25rem;
-  text-align: center;
-  margin: 2rem 0;
+.inputHalf {
+  flex: 1;
 }
 
-.placeholderText {
-  font-size: 1.25rem;
-  color: #4b5563;
-  margin-bottom: 1rem;
+.buttonContainer {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 0.5rem;
-  }
-  
-  .title {
-    font-size: 1.75rem;
-  }
-}
+/* Results styling moved to MonthlyPaymentResults component */

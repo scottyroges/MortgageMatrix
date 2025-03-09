@@ -29,6 +29,9 @@
 - **Currency Formatting**: Using Intl.NumberFormat for consistent currency display
 - **Form Validation**: Client-side validation for required fields and numeric inputs
 - **SVG Icons**: Inline SVG icons for UI elements
+- **Mortgage Calculations**:
+  - Affordability calculations based on monthly payment, interest rates, and property taxes
+  - Monthly payment calculations based on home price, down payment, interest rate, and loan term
 
 ## Development Commands
 - `npm run dev`: Start development server

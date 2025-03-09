@@ -2,19 +2,19 @@
 
 ## Current Focus
 
-The current focus is on implementing the first screen of the Mortgage Matrix application, which is the Home Affordability Estimator. This includes:
+The current focus is on implementing the core calculator screens of the Mortgage Matrix application. We have completed the Home Affordability Estimator and are now working on the Monthly Payment Calculator. This includes:
 
-1. Creating reusable UI components for the mortgage calculator
-2. Implementing the form interface for user inputs
-3. Styling the components to match the design
+1. Creating reusable UI components for the mortgage calculators
+2. Implementing the form interfaces for user inputs
+3. Styling the components to match the designs
 4. Adding basic form validation
-5. Setting up the expandable results section with actual calculation data
+5. Setting up the results sections with actual calculation data
 6. Refactoring components for better organization and reusability
 
 ## Recent Changes
 
-- Implemented the first screen of the Mortgage Matrix app
-- Created several new reusable components:
+- Implemented the first two screens of the Mortgage Matrix app (Home Affordability Estimator and Monthly Payment Calculator)
+- Created several reusable components:
   - InputField: For monetary inputs with dollar sign prefix and formatting
   - MinMaxSlider: For selecting ranges like interest rates and property taxes with dual thumbs
   - Button: For Calculate and Reset buttons with primary/secondary variants
@@ -22,8 +22,11 @@ The current focus is on implementing the first screen of the Mortgage Matrix app
   - InfoSection: For the "How It Works" section
   - Footer: For the page footer with social media icons
   - AffordabilityEstimatorResults: For displaying dynamic calculation results with detailed interest rate breakdowns
-- Implemented mortgage calculation utilities in mortgageCalculations.ts
-- Connected the UI with the calculation logic to display actual affordable house prices
+  - TermSelector: For selecting loan term options (30, 20, 15, 10 years) with button group
+- Implemented mortgage calculation utilities:
+  - mortgageCalculations.ts: For affordability calculations
+  - calculateMonthlyPayment.ts: For monthly payment calculations
+- Connected the UI with the calculation logic to display actual affordable house prices and monthly payments
 - Updated the Header component with calculator icon and hamburger menu
 - Implemented form validation for required fields
 - Added styling to match the design with specified colors (#059669 for green and #111827 for dark blue)
@@ -66,12 +69,11 @@ The current focus is on implementing the first screen of the Mortgage Matrix app
 
 ## Next Steps
 
-1. Implement the actual calculation logic for mortgage estimates
-2. Add more sophisticated validation for form inputs
-3. Create additional screens for other mortgage calculator features
-4. Implement state management for sharing data between components
-5. Add routing for multiple pages/features
-6. Enhance accessibility features
+1. Add more sophisticated validation for form inputs
+2. Create additional screens for other mortgage calculator features
+3. Implement state management for sharing data between components
+4. Add routing for multiple pages/features
+5. Enhance accessibility features
 
 ## Current Challenges
 

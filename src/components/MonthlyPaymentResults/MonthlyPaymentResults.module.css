@@ -1,0 +1,82 @@
+.resultsSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.resultsContainer {
+  background-color: #111827;
+  color: white;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resultsTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: white;
+  text-align: center;
+}
+
+.paymentCircle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 4px solid #059669;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.paymentAmount {
+  font-size: 2rem;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.perMonth {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+}
+
+.paymentBreakdown {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.breakdownItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.breakdownItem:last-child {
+  border-bottom: none;
+}
+
+.breakdownLabel {
+  color: #9ca3af;
+}
+
+.breakdownValue {
+  font-weight: 600;
+  color: white;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.actionContainer {
+  margin-top: 1rem;
+  padding: 1.5rem 1rem;
+}
+
+.buttonContainer {
+  margin-bottom: 1rem;
+}

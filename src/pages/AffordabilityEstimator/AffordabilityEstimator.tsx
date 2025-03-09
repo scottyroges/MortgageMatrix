@@ -29,7 +29,6 @@ export const AffordabilityEstimator = () => {
 
   // Form validation and results visibility
   const [errors, setErrors] = useState<Record<string, string>>({})
-  const [showResults, setShowResults] = useState(false)
   const [calculationResults, setCalculationResults] =
     useState<AffordabilityByDownPayment | null>(null)
 
@@ -77,7 +76,6 @@ export const AffordabilityEstimator = () => {
 
       // Store results and show results section
       setCalculationResults(results)
-      setShowResults(true)
 
       // Scroll to results after a short delay to ensure the results are rendered
       setTimeout(() => {
@@ -105,7 +103,7 @@ export const AffordabilityEstimator = () => {
     setErrors({})
 
     // Hide results when reset is clicked
-    setShowResults(false)
+    setCalculationResults(null)
 
     // Scroll back to the top of the page
     setTimeout(() => {
@@ -178,7 +176,7 @@ export const AffordabilityEstimator = () => {
         </div>
       </div>
 
-      {showResults && calculationResults && (
+      {calculationResults !== null && (
         <div ref={resultsRef}>
           <AffordabilityEstimatorResults
             results={calculationResults}
@@ -193,8 +191,6 @@ export const AffordabilityEstimator = () => {
         linkText='Learn more about our methodology'
         linkUrl='/how-it-works'
       />
-
-      <Footer />
     </div>
   )
 }

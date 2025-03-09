@@ -43,7 +43,9 @@ export const InputField = ({
 
   return (
     <div className={styles.container}>
-      <label className={styles.label}>{label}</label>
+      <label className={!label.trim() ? styles.hiddenLabel : styles.label}>
+        {!label.trim() ? 'hidden' : label}
+      </label>
       <div
         className={`${styles.inputContainer} ${isFocused ? styles.focused : ''} ${error ? styles.error : ''}`}
       >

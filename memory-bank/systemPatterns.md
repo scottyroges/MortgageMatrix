@@ -63,18 +63,18 @@ A reusable component for monetary inputs with dollar sign prefix and formatting.
 />
 ```
 
-### RangeSlider
+### MinMaxSlider
 A slider component for range inputs with customizable min/max values and labels.
 ```tsx
-<RangeSlider
-  label="Interest Rate Range"
-  min={3}
-  max={7}
-  value={interestRate}
-  onChange={setInterestRate}
-  step={0.1}
-  minLabel="3%"
-  maxLabel="7%"
+<MinMaxSlider
+  rangeMin={1}
+  rangeMax={15}
+  step={0.5}
+  defaultMinValue={2.5}
+  defaultMaxValue={7}
+  onChange={setInterestRateRange}
+  inputLabel="Interest Rate Range"
+  minMaxLabelType="percentage"
 />
 ```
 
@@ -84,6 +84,17 @@ A button component with primary and secondary variants.
 <Button variant="primary" fullWidth onClick={handleCalculate}>
   Calculate
 </Button>
+```
+
+### TermSelector
+A component for selecting from a group of options presented as buttons, used for loan term selection.
+```tsx
+<TermSelector
+  label="Length of loan"
+  options={[30, 20, 15, 10]}
+  defaultValue={30}
+  onChange={setLoanTerm}
+/>
 ```
 
 ### ExpandableItem
