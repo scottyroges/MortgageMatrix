@@ -2,7 +2,6 @@ import { useState, useRef } from 'react'
 
 import { Button } from '../../components/Button'
 import { calculateAffordableHousePrices } from '../../utils/mortgageCalculations'
-import { Footer } from '../../components/Footer'
 import { InfoSection } from '../../components/InfoSection'
 import { InputField } from '../../components/InputField'
 import { MinMaxSlider } from '../../components/MinMaxSlider'
