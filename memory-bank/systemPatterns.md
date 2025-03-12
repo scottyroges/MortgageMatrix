@@ -5,40 +5,47 @@ Mortgage Matrix follows a component-based architecture using React and TypeScrip
 
 ## Directory Structure
 ```
-src/
-├── assets/         # Static assets like images, icons
-├── components/     # Reusable UI components
-│   ├── AffordabilityEstimatorResults/
-│   ├── Button/
-│   ├── ExpandableItem/
-│   ├── Footer/
-│   ├── Header/
-│   ├── InfoSection/
-│   ├── InputField/
-│   ├── MinMaxSlider/
-│   ├── MonthlyPaymentResults/
-│   ├── PaymentCircle/
-│   └── TermSelector/
-├── layouts/        # Layout components for page structure
-│   └── MainLayout/
-├── pages/          # Page components for different routes
-│   ├── AffordabilityEstimator/
-│   ├── ContactUs/
-│   ├── HowItWorks/
-│   ├── MonthlyPaymentCalculator/
-│   ├── PrivacyPolicy/
-│   └── TermsOfService/
-├── types/          # TypeScript type definitions
-│   ├── affordabilityFormValues.ts
-│   ├── monthlyPaymentFormValues.ts
-│   └── rangeValues.ts
-├── test/           # Test setup and utilities
-│   └── utils/      # Test files for utility functions
-└── utils/          # Utility functions and helpers
-    ├── affordabilityParamHashing.ts
-    ├── calculateAffordabilityByDownpayment.ts
-    ├── calculateMonthlyPayment.ts
-    └── monthlyPaymentParamHashing.ts
+/
+├── public/         # Public assets and files
+│   ├── fonts/      # Font files
+│   ├── robots.txt  # Robots file for search engines
+│   └── sitemap.xml # Generated sitemap for SEO
+├── scripts/        # Build and utility scripts
+│   └── generate-sitemap.js # Sitemap generation script
+└── src/
+    ├── assets/         # Static assets like images, icons
+    ├── components/     # Reusable UI components
+    │   ├── AffordabilityEstimatorResults/
+    │   ├── Button/
+    │   ├── ExpandableItem/
+    │   ├── Footer/
+    │   ├── Header/
+    │   ├── InfoSection/
+    │   ├── InputField/
+    │   ├── MinMaxSlider/
+    │   ├── MonthlyPaymentResults/
+    │   ├── PaymentCircle/
+    │   └── TermSelector/
+    ├── layouts/        # Layout components for page structure
+    │   └── MainLayout/
+    ├── pages/          # Page components for different routes
+    │   ├── AffordabilityEstimator/
+    │   ├── ContactUs/
+    │   ├── HowItWorks/
+    │   ├── MonthlyPaymentCalculator/
+    │   ├── PrivacyPolicy/
+    │   └── TermsOfService/
+    ├── types/          # TypeScript type definitions
+    │   ├── affordabilityFormValues.ts
+    │   ├── monthlyPaymentFormValues.ts
+    │   └── rangeValues.ts
+    ├── test/           # Test setup and utilities
+    │   └── utils/      # Test files for utility functions
+    └── utils/          # Utility functions and helpers
+        ├── affordabilityParamHashing.ts
+        ├── calculateAffordabilityByDownpayment.ts
+        ├── calculateMonthlyPayment.ts
+        └── monthlyPaymentParamHashing.ts
 ```
 
 ## Component Pattern
@@ -228,3 +235,14 @@ The component uses the PaymentCircle component to visualize the payment breakdow
   - `MonthlyPaymentFormValues` for the Monthly Payment Calculator
 - Record types for error handling
 - Strict type checking enabled
+
+## SEO Optimization
+- Dynamic sitemap generation during build process
+- Sitemap includes all routes with appropriate priorities:
+  - Highest priority (1.0): `/affordability-estimator` and `/monthly-payment-calculator`
+  - Medium priority (0.8): Home page (`/`)
+  - Standard priority (0.6): Other pages
+- Robots.txt file for search engine crawling instructions
+- Sitemap generation script in `scripts/generate-sitemap.js`
+- Integration with build process via npm script
+- Automatic lastmod date generation based on build date

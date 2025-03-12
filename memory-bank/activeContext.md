@@ -106,6 +106,7 @@ Monthly Payment Calculator, and are now enhancing them with additional functiona
    etc.)
 8. Add social sharing capabilities for calculator results
 9. Enhance the Contact Us page with a contact form
+10. Submit sitemap to search engines for improved SEO
 
 ## Current Challenges
 
